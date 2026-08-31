@@ -1,0 +1,52 @@
+{
+  "ranks": [
+    {
+      "id": "vip",
+      "name": "VIP",
+      "price": 60,
+      "claim_blocks": 1000,
+      "totems": 3,
+      "breeze_spawners": 0
+    },
+    {
+      "id": "elite",
+      "name": "ELITE",
+      "price": 150,
+      "claim_blocks": 3000,
+      "totems": 6,
+      "breeze_spawners": 1
+    },
+    {
+      "id": "sigma",
+      "name": "SIGMA",
+      "price": 300,
+      "claim_blocks": 7500,
+      "totems": 10,
+      "breeze_spawners": 2
+    },
+    {
+      "id": "legend",
+      "name": "LEGEND",
+      "price": 600,
+      "claim_blocks": 20000,
+      "totems": 16,
+      "breeze_spawners": 4
+    },
+    {
+      "id": "celestials",
+      "name": "CELESTIALS",
+      "price": 1000,
+      "claim_blocks": 50000,
+      "totems": 25,
+      "breeze_spawners": 8
+    },
+    {
+      "id": "goat",
+      "name": "GOAT",
+      "price": 1500,
+      "claim_blocks": 125000,
+      "totems": 40,
+      "breeze_spawners": 15
+    }
+  ]
+}
