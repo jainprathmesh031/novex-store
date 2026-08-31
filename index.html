@@ -839,9 +839,68 @@
 
                 Continue to payment
 
-            </button>
+            </button
+<div id="paymentSection" style="display: none;">
+
+    <div style="text-align: center; margin: 20px 0;">
+
+        <h4>Pay via UPI</h4>
+
+        <img
+            src="upi-qr.gif"
+            alt="UPI QR Code"
+            style="
+                width: 220px;
+                height: 220px;
+                object-fit: contain;
+                border-radius: 12px;
+                margin: 15px auto;
+            ">
+
+        <p>
+            Scan the QR code and pay
+            <strong id="paymentAmount">₹0</strong>
+        </p>
+
+    </div>
 
 
+    <label
+        class="modal-label"
+        for="utrInput">
+
+        UTR / Transaction ID
+
+    </label>
+
+    <input
+        id="utrInput"
+        class="modal-input"
+        type="text"
+        placeholder="Enter your UTR / Transaction ID"
+        autocomplete="off"
+        maxlength="50">
+
+
+    <p
+        class="modal-error"
+        id="paymentError">
+
+        Please enter your UTR / Transaction ID.
+
+    </p>
+
+
+    <button
+        class="btn btn-primary modal-submit"
+        id="paymentSubmit">
+
+        I've Completed Payment
+
+    </button>
+
+</div>
+                
             <p class="modal-hint">
 
                 Payment options will appear at checkout.
