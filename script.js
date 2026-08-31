@@ -1,82 +1,70 @@
-let selectedRank = "";
-let selectedPrice = 0;
+// ---------------------------------------------
+// NØVEX Store — purchase flow
+// ---------------------------------------------
 
 const modalBackdrop = document.getElementById("modalBackdrop");
-const modalClose = document.getElementById("modalClose");
-
-const modalRankName = document.getElementById("modalRankName");
 const modalRankTag = document.getElementById("modalRankTag");
+const modalRankName = document.getElementById("modalRankName");
 const modalPrice = document.getElementById("modalPrice");
-
 const ignInput = document.getElementById("ignInput");
 const modalError = document.getElementById("modalError");
 const modalSubmit = document.getElementById("modalSubmit");
-const paymentSection =
-    document.getElementById("paymentSection");
+const modalClose = document.getElementById("modalClose");
 
-const paymentAmount =
-    document.getElementById("paymentAmount");
-
-const utrInput =
-    document.getElementById("utrInput");
-
-const paymentError =
-    document.getElementById("paymentError");
-
-const paymentSubmit =
-    document.getElementById("paymentSubmit");
+let activePurchase = null;
 
 
-function buyRank(rank, price) {
+// Open purchase modal
+function buyRank(rankName, price) {
 
-    selectedRank = rank;
-    selectedPrice = price;
+    activePurchase = {
+        rankName: rankName,
+        price: price
+    };
 
-    modalRankName.textContent = rank;
-    modalRankTag.textContent = rank;
-
+    modalRankTag.textContent = rankName;
+    modalRankName.textContent = rankName;
     modalPrice.textContent =
         "₹" + price.toLocaleString("en-IN");
 
     ignInput.value = "";
+    modalError.textContent =
+        "Enter the exact username you use to join the server.";
 
-utrInput.value = "";
+    modalError.classList.remove("visible");
 
-modalError.classList.remove("show");
+    modalBackdrop.classList.add("open");
 
-paymentError.classList.remove("show");
+    document.body.style.overflow = "hidden";
 
-paymentSection.style.display = "none";
-
-modalSubmit.style.display = "block";
-
-paymentAmount.textContent =
-    "₹" + price.toLocaleString("en-IN");
-    modalBackdrop.classList.add("active");
-
-    setTimeout(() => {
+    setTimeout(function () {
         ignInput.focus();
     }, 100);
-
 }
 
 
+// Close modal
 function closeModal() {
 
-    modalBackdrop.classList.remove("active");
+    modalBackdrop.classList.remove("open");
 
+    document.body.style.overflow = "";
+
+    activePurchase = null;
 }
 
 
+// Close button
 modalClose.addEventListener(
     "click",
     closeModal
 );
 
 
+// Click outside modal
 modalBackdrop.addEventListener(
     "click",
-    function(event) {
+    function (event) {
 
         if (event.target === modalBackdrop) {
             closeModal();
@@ -86,11 +74,15 @@ modalBackdrop.addEventListener(
 );
 
 
+// Escape key
 document.addEventListener(
     "keydown",
-    function(event) {
+    function (event) {
 
-        if (event.key === "Escape") {
+        if (
+            event.key === "Escape" &&
+            modalBackdrop.classList.contains("open")
+        ) {
             closeModal();
         }
 
@@ -98,19 +90,23 @@ document.addEventListener(
 );
 
 
+// Continue to payment
 modalSubmit.addEventListener(
     "click",
-    function() {
+    function () {
 
-        const ign =
-            ignInput.value.trim();
+        const ign = ignInput.value.trim();
 
-        if (!ign) {
+        const validIgn =
+            /^[A-Za-z0-9_]{3,16}$/.test(ign);
+
+
+        if (!validIgn) {
 
             modalError.textContent =
-                "Please enter your Minecraft username.";
+                "Enter a valid Minecraft username (3–16 letters, numbers or underscores).";
 
-            modalError.classList.add("show");
+            modalError.classList.add("visible");
 
             ignInput.focus();
 
@@ -118,84 +114,21 @@ modalSubmit.addEventListener(
         }
 
 
-        if (ign.length < 3 || ign.length > 16) {
-
-            modalError.textContent =
-                "Please enter a valid Minecraft username.";
-
-            modalError.classList.add("show");
-
-            ignInput.focus();
-
-            return;
-        }
-
-
-        if (!/^[A-Za-z0-9_]+$/.test(ign)) {
-
-            modalError.textContent =
-                "Username can only contain letters, numbers and underscores.";
-
-            modalError.classList.add("show");
-
-            ignInput.focus();
-
-            return;
-        }
-
-
-        modalError.classList.remove("show");
-
-
-              paymentSection.style.display = "block";
-
-        modalSubmit.style.display = "none";
-
-        utrInput.focus();
-        paymentSubmit.addEventListener(
-    "click",
-    function() {
-
-        const utr =
-            utrInput.value.trim();
-
-        if (!utr) {
-
-            paymentError.textContent =
-                "Please enter your UTR / Transaction ID.";
-
-            paymentError.classList.add("show");
-
-            utrInput.focus();
-
-            return;
-        }
-
-
-        if (utr.length < 6) {
-
-            paymentError.textContent =
-                "Please enter a valid UTR / Transaction ID.";
-
-            paymentError.classList.add("show");
-
-            utrInput.focus();
-
-            return;
-        }
-
-
-        paymentError.classList.remove("show");
+        modalError.classList.remove("visible");
 
 
         alert(
-            "Payment submitted!\\n\\n" +
-            "Rank: " + selectedRank + "\\n" +
-            "Amount: ₹" +
-            selectedPrice.toLocaleString("en-IN") +
-            "\\nMinecraft IGN: " + ignInput.value.trim() +
-            "\\nUTR: " + utr +
-            "\\n\\nYour payment will be verified before the rank is delivered."
+            "Order selected!\n\n" +
+            "Rank: " +
+            activePurchase.rankName +
+            "\n" +
+            "Price: ₹" +
+            activePurchase.price.toLocaleString("en-IN") +
+            "\n" +
+            "Minecraft IGN: " +
+            ign +
+            "\n\n" +
+            "UPI payment will be connected next."
         );
 
     }
