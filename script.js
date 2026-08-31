@@ -1,7 +1,7 @@
 // ---------------------------------------------
 // NØVEX Store — purchase flow
 // ---------------------------------------------
-
+console.log("NOVEX SCRIPT LOADED");
 const modalBackdrop = document.getElementById("modalBackdrop");
 const modalRankTag = document.getElementById("modalRankTag");
 const modalRankName = document.getElementById("modalRankName");
