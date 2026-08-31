@@ -11,6 +11,20 @@ const modalPrice = document.getElementById("modalPrice");
 const ignInput = document.getElementById("ignInput");
 const modalError = document.getElementById("modalError");
 const modalSubmit = document.getElementById("modalSubmit");
+const paymentSection =
+    document.getElementById("paymentSection");
+
+const paymentAmount =
+    document.getElementById("paymentAmount");
+
+const utrInput =
+    document.getElementById("utrInput");
+
+const paymentError =
+    document.getElementById("paymentError");
+
+const paymentSubmit =
+    document.getElementById("paymentSubmit");
 
 
 function buyRank(rank, price) {
@@ -26,8 +40,18 @@ function buyRank(rank, price) {
 
     ignInput.value = "";
 
-    modalError.classList.remove("show");
+utrInput.value = "";
 
+modalError.classList.remove("show");
+
+paymentError.classList.remove("show");
+
+paymentSection.style.display = "none";
+
+modalSubmit.style.display = "block";
+
+paymentAmount.textContent =
+    "₹" + price.toLocaleString("en-IN");
     modalBackdrop.classList.add("active");
 
     setTimeout(() => {
@@ -123,22 +147,55 @@ modalSubmit.addEventListener(
         modalError.classList.remove("show");
 
 
-        /*
-         * PAYMENT WILL BE CONNECTED HERE.
-         *
-         * For now we only confirm the order details.
-         *
-         * Later this button will create an order on
-         * our free backend and open the UPI checkout.
-         */
+              paymentSection.style.display = "block";
+
+        modalSubmit.style.display = "none";
+
+        utrInput.focus();
+        paymentSubmit.addEventListener(
+    "click",
+    function() {
+
+        const utr =
+            utrInput.value.trim();
+
+        if (!utr) {
+
+            paymentError.textContent =
+                "Please enter your UTR / Transaction ID.";
+
+            paymentError.classList.add("show");
+
+            utrInput.focus();
+
+            return;
+        }
+
+
+        if (utr.length < 6) {
+
+            paymentError.textContent =
+                "Please enter a valid UTR / Transaction ID.";
+
+            paymentError.classList.add("show");
+
+            utrInput.focus();
+
+            return;
+        }
+
+
+        paymentError.classList.remove("show");
 
 
         alert(
-            "Order selected!\\n\\n" +
+            "Payment submitted!\\n\\n" +
             "Rank: " + selectedRank + "\\n" +
-            "Price: ₹" + selectedPrice.toLocaleString("en-IN") + "\\n" +
-            "Minecraft IGN: " + ign + "\\n\\n" +
-            "UPI checkout will be connected next."
+            "Amount: ₹" +
+            selectedPrice.toLocaleString("en-IN") +
+            "\\nMinecraft IGN: " + ignInput.value.trim() +
+            "\\nUTR: " + utr +
+            "\\n\\nYour payment will be verified before the rank is delivered."
         );
 
     }
