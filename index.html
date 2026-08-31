@@ -2,20 +2,858 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NØVEX Store</title>
+    <title>NØVEX — Minecraft Store</title>
 
+    <meta name="description"
+        content="Official NØVEX Minecraft Store. Get exclusive survival ranks, claim blocks, spawners and premium rewards.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>NØVEX STORE</h1>
+    <!-- NAVIGATION -->
 
-    <p>Official NØVEX Minecraft Store</p>
+    <header class="navbar">
+
+        <div class="nav-inner">
+
+            <a href="#home" class="logo">
+                <span class="logo-mark">N</span>
+                <span class="logo-word">NØVEX</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#store">Store</a>
+                <a href="#how">How it works</a>
+            </nav>
+
+            <!-- Replace # with your Discord invite later -->
+
+            <a href="#" class="nav-discord">
+                <span>◈</span>
+                Discord
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-glow"></div>
+
+            <div class="hero-inner">
+
+                <div class="hero-content">
+
+                    <p class="eyebrow">NØVEX NETWORK</p>
+
+                    <h1>
+                        Dominate.<br>
+                        <span>Survive.</span>
+                    </h1>
+
+                    <p class="hero-text">
+                        Upgrade your NØVEX survival experience with exclusive
+                        ranks, powerful rewards, claim space, spawners and
+                        premium commands.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="#store" class="btn btn-primary">
+                            Browse ranks
+                        </a>
+
+                        <a href="#how" class="btn btn-ghost">
+                            How it works
+                        </a>
+
+                    </div>
+
+
+                    <div class="hero-stats">
+
+                        <div>
+                            <strong>6</strong>
+                            <span>Ranks</span>
+                        </div>
+
+                        <div>
+                            <strong>₹60</strong>
+                            <span>Starting</span>
+                        </div>
+
+                        <div>
+                            <strong>UPI</strong>
+                            <span>Payments</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-visual">
+
+                    <div class="orb"></div>
+
+                    <div class="ring ring-a"></div>
+
+                    <div class="ring ring-b"></div>
+
+                    <div class="badge-float">
+                        NØVEX
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STORE -->
+
+        <section id="store" class="store-section">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">NØVEX STORE</p>
+
+                <h2>Choose your rank</h2>
+
+                <p>
+                    Permanent ranks with progressively stronger rewards,
+                    claim space, farming advantages and premium commands.
+                </p>
+
+            </div>
+
+
+            <div class="rank-grid">
+
+
+                <!-- VIP -->
+
+                <article class="rank-card" data-tier="1">
+
+                    <div class="rank-head">
+
+                        <span class="rank-tag">
+                            STARTER
+                        </span>
+
+                        <div class="tier-bar">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                    </div>
+
+
+                    <h3>VIP</h3>
+
+                    <p class="rank-description">
+                        Your first step into NØVEX.
+                    </p>
+
+
+                    <div class="price">
+                        <span class="amount">₹60</span>
+                        <span class="unit">one-time</span>
+                    </div>
+
+
+                    <ul class="perks">
+
+                        <li>1,000 claim blocks</li>
+
+                        <li>3 Totems of Undying</li>
+
+                        <li>1 VIP Crate Key</li>
+
+                        <li>VIP Supply Kit</li>
+
+                        <li><code>/craft</code></li>
+
+                        <li><code>/enderchest</code></li>
+
+                        <li><code>/hat</code></li>
+
+                        <li>VIP name prefix</li>
+
+                    </ul>
+
+
+                    <button
+                        class="buy-button"
+                        onclick="buyRank('VIP', 60)">
+
+                        Get VIP
+
+                    </button>
+
+                </article>
+
+
+                <!-- ELITE -->
+
+                <article class="rank-card" data-tier="2">
+
+                    <div class="rank-head">
+
+                        <span class="rank-tag">
+                            ELITE
+                        </span>
+
+                        <div class="tier-bar">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                    </div>
+
+
+                    <h3>ELITE</h3>
+
+                    <p class="rank-description">
+                        Step beyond the ordinary.
+                    </p>
+
+
+                    <div class="price">
+                        <span class="amount">₹150</span>
+                        <span class="unit">one-time</span>
+                    </div>
+
+
+                    <ul class="perks">
+
+                        <li>3,000 claim blocks</li>
+
+                        <li>6 Totems of Undying</li>
+
+                        <li>1 Breeze Spawner</li>
+
+                        <li>2 Elite Crate Keys</li>
+
+                        <li><code>/heal</code></li>
+
+                        <li><code>/feed</code></li>
+
+                        <li><code>/repair</code></li>
+
+                        <li><code>/near</code></li>
+
+                        <li>Elite name prefix</li>
+
+                    </ul>
+
+
+                    <button
+                        class="buy-button"
+                        onclick="buyRank('ELITE', 150)">
+
+                        Get ELITE
+
+                    </button>
+
+                </article>
+
+
+                <!-- SIGMA -->
+
+                <article class="rank-card" data-tier="3">
+
+                    <div class="rank-head">
+
+                        <span class="rank-tag">
+                            SIGMA
+                        </span>
+
+                        <div class="tier-bar">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                    </div>
+
+
+                    <h3>SIGMA</h3>
+
+                    <p class="rank-description">
+                        Built different.
+                    </p>
+
+
+                    <div class="price">
+                        <span class="amount">₹300</span>
+                        <span class="unit">one-time</span>
+                    </div>
+
+
+                    <ul class="perks">
+
+                        <li>7,500 claim blocks</li>
+
+                        <li>10 Totems of Undying</li>
+
+                        <li>2 Breeze Spawners</li>
+
+                        <li>1 Rare Spawner Voucher</li>
+
+                        <li>4 Sigma Crate Keys</li>
+
+                        <li><code>/back</code></li>
+
+                        <li><code>/sell</code></li>
+
+                        <li><code>/disposal</code></li>
+
+                        <li><code>/nick</code></li>
+
+                        <li><code>/speed</code></li>
+
+                        <li>Sigma aura effect</li>
+
+                    </ul>
+
+
+                    <button
+                        class="buy-button"
+                        onclick="buyRank('SIGMA', 300)">
+
+                        Get SIGMA
+
+                    </button>
+
+                </article>
+
+
+                <!-- LEGEND -->
+
+                <article class="rank-card featured" data-tier="4">
+
+                    <div class="popular">
+                        MOST POPULAR
+                    </div>
+
+
+                    <div class="rank-head">
+
+                        <span class="rank-tag">
+                            LEGEND
+                        </span>
+
+                        <div class="tier-bar">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                    </div>
+
+
+                    <h3>LEGEND</h3>
+
+                    <p class="rank-description">
+                        Enter the premium tier.
+                    </p>
+
+
+                    <div class="price">
+                        <span class="amount">₹600</span>
+                        <span class="unit">one-time</span>
+                    </div>
+
+
+                    <ul class="perks">
+
+                        <li>20,000 claim blocks</li>
+
+                        <li>16 Totems of Undying</li>
+
+                        <li>4 Breeze Spawners</li>
+
+                        <li>2 Rare Spawner Vouchers</li>
+
+                        <li>6 Legend Crate Keys</li>
+
+                        <li><strong>Permanent /fly</strong></li>
+
+                        <li><code>/heal</code></li>
+
+                        <li><code>/feed</code></li>
+
+                        <li><code>/repair</code></li>
+
+                        <li><code>/back</code></li>
+
+                        <li><code>/top</code></li>
+
+                        <li><code>/speed</code></li>
+
+                        <li>Legend aura effect</li>
+
+                        <li>Monthly Legend reward</li>
+
+                    </ul>
+
+
+                    <button
+                        class="buy-button primary"
+                        onclick="buyRank('LEGEND', 600)">
+
+                        Get LEGEND
+
+                    </button>
+
+                </article>
+
+
+                <!-- CELESTIALS -->
+
+                <article class="rank-card" data-tier="5">
+
+                    <div class="rank-head">
+
+                        <span class="rank-tag">
+                            CELESTIALS
+                        </span>
+
+                        <div class="tier-bar">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                    </div>
+
+
+                    <h3>CELESTIALS</h3>
+
+                    <p class="rank-description">
+                        Rise above everyone.
+                    </p>
+
+
+                    <div class="price">
+                        <span class="amount">₹1,000</span>
+                        <span class="unit">one-time</span>
+                    </div>
+
+
+                    <ul class="perks">
+
+                        <li>50,000 claim blocks</li>
+
+                        <li>25 Totems of Undying</li>
+
+                        <li>8 Breeze Spawners</li>
+
+                        <li>3 Rare Spawner Vouchers</li>
+
+                        <li>10 Celestials Crate Keys</li>
+
+                        <li><strong>Permanent /fly</strong></li>
+
+                        <li><code>/top</code></li>
+
+                        <li><code>/speed</code></li>
+
+                        <li><code>/jump</code></li>
+
+                        <li><code>/hat</code></li>
+
+                        <li><code>/craft</code></li>
+
+                        <li><code>/enderchest</code></li>
+
+                        <li>Celestials aura effect</li>
+
+                        <li>Monthly Celestials reward</li>
+
+                    </ul>
+
+
+                    <button
+                        class="buy-button"
+                        onclick="buyRank('CELESTIALS', 1000)">
+
+                        Get CELESTIALS
+
+                    </button>
+
+                </article>
+
+
+                <!-- GOAT -->
+
+                <article class="rank-card goat" data-tier="6">
+
+                    <div class="rank-head">
+
+                        <span class="rank-tag">
+                            ULTIMATE
+                        </span>
+
+                        <div class="tier-bar">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                    </div>
+
+
+                    <h3>GOAT</h3>
+
+                    <p class="rank-description">
+                        The ultimate NØVEX supporter.
+                    </p>
+
+
+                    <div class="price">
+                        <span class="amount">₹1,500</span>
+                        <span class="unit">one-time</span>
+                    </div>
+
+
+                    <ul class="perks">
+
+                        <li><strong>125,000 claim blocks</strong></li>
+
+                        <li><strong>40 Totems of Undying</strong></li>
+
+                        <li><strong>15 Breeze Spawners</strong></li>
+
+                        <li>5 Rare Spawner Vouchers</li>
+
+                        <li>15 GOAT Crate Keys</li>
+
+                        <li><strong>Permanent /fly</strong></li>
+
+                        <li>Unlimited homes</li>
+
+                        <li>All premium commands</li>
+
+                        <li>GOAT aura effect</li>
+
+                        <li>Exclusive GOAT cosmetics</li>
+
+                        <li>Monthly GOAT reward</li>
+
+                    </ul>
+
+
+                    <button
+                        class="buy-button"
+                        onclick="buyRank('GOAT', 1500)">
+
+                        Get GOAT
+
+                    </button>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+
+        <section id="how" class="how-section">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">SIMPLE & FAST</p>
+
+                <h2>How it works</h2>
+
+                <p>
+                    Choose your rank, enter your Minecraft username,
+                    complete payment and receive your rewards.
+                </p>
+
+            </div>
+
+
+            <ol class="steps">
+
+                <li class="step">
+
+                    <span class="step-num">1</span>
+
+                    <h3>Choose a rank</h3>
+
+                    <p>
+                        Compare the NØVEX ranks and select the one
+                        that fits your playstyle.
+                    </p>
+
+                </li>
+
+
+                <li class="step">
+
+                    <span class="step-num">2</span>
+
+                    <h3>Enter your IGN</h3>
+
+                    <p>
+                        Enter the exact Minecraft username
+                        that should receive the purchase.
+                    </p>
+
+                </li>
+
+
+                <li class="step">
+
+                    <span class="step-num">3</span>
+
+                    <h3>Pay with UPI</h3>
+
+                    <p>
+                        Complete your UPI payment using the
+                        payment method provided at checkout.
+                    </p>
+
+                </li>
+
+
+                <li class="step">
+
+                    <span class="step-num">4</span>
+
+                    <h3>Receive your rank</h3>
+
+                    <p>
+                        After payment verification, your purchase
+                        will be delivered to your Minecraft account.
+                    </p>
+
+                </li>
+
+            </ol>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+
+                <a href="#home" class="logo">
+
+                    <span class="logo-mark">N</span>
+
+                    <span class="logo-word">
+                        NØVEX
+                    </span>
+
+                </a>
+
+                <p>
+                    NØVEX Minecraft Survival Network.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <div>
+
+                    <h4>Store</h4>
+
+                    <a href="#store">
+                        All ranks
+                    </a>
+
+                    <a href="#how">
+                        How it works
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <h4>Community</h4>
+
+                    <a href="#">
+                        Discord
+                    </a>
+
+                    <a href="#">
+                        Support
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 NØVEX Network. All rights reserved.
+            </p>
+
+            <p class="secure-note">
+                UPI payments
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- PURCHASE MODAL -->
+
+    <div class="modal-backdrop" id="modalBackdrop">
+
+        <div
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modalTitle">
+
+            <button
+                class="modal-close"
+                id="modalClose"
+                aria-label="Close">
+
+                ✕
+
+            </button>
+
+
+            <p
+                class="modal-eyebrow"
+                id="modalRankTag">
+
+                RANK
+
+            </p>
+
+
+            <h3 id="modalTitle">
+
+                Get
+                <span id="modalRankName">
+                    Rank
+                </span>
+
+            </h3>
+
+
+            <p
+                class="modal-price"
+                id="modalPrice">
+
+                ₹0
+
+            </p>
+
+
+            <label
+                class="modal-label"
+                for="ignInput">
+
+                Minecraft username (IGN)
+
+            </label>
+
+
+            <input
+                id="ignInput"
+                class="modal-input"
+                type="text"
+                placeholder="e.g. Steve_YT"
+                autocomplete="off"
+                maxlength="16">
+
+
+            <p
+                class="modal-error"
+                id="modalError">
+
+                Enter the exact username you use to join the server.
+
+            </p>
+
+
+            <button
+                class="btn btn-primary modal-submit"
+                id="modalSubmit">
+
+                Continue to payment
+
+            </button>
+
+
+            <p class="modal-hint">
+
+                Payment options will appear at checkout.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
 
 </body>
 
