@@ -41,7 +41,51 @@ const paymentSubmit =
 
 let selectedRank = "";
 let selectedPrice = 0;
+// ===============================
+// OPEN PURCHASE MODAL
+// ===============================
 
+function buyRank(rank, price) {
+
+    selectedRank = rank;
+    selectedPrice = price;
+
+    modalRankName.textContent = rank;
+    modalRankTag.textContent = rank;
+
+    modalPrice.textContent =
+        "₹" + price.toLocaleString("en-IN");
+
+    ignInput.value = "";
+
+    modalError.textContent =
+        "Enter the exact username you use to join the server.";
+
+    modalError.classList.remove("show");
+
+    // Hide payment section when opening a new purchase
+    if (paymentSection) {
+        paymentSection.style.display = "none";
+    }
+
+    // Show the Continue to Payment button
+    modalSubmit.style.display = "block";
+
+    // Reset payment button
+    paymentSubmit.disabled = false;
+    paymentSubmit.textContent =
+        "I've Completed Payment";
+
+    utrInput.value = "";
+
+    paymentError.classList.remove("show");
+
+    modalBackdrop.classList.add("active");
+
+    setTimeout(function () {
+        ignInput.focus();
+    }, 100);
+}
 
 // ======================================
 // OPEN PURCHASE MODAL
