@@ -9,9 +9,8 @@ const modalClose = document.getElementById("modalClose");
 const paymentSection =
     document.getElementById("paymentSection");
 
-const paymentAmountNumber =
-    document.getElementById("paymentAmountNumber");
-
+const paymentAmount =
+    document.getElementById("paymentAmount");
 const utrInput =
     document.getElementById("utrInput");
 
