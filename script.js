@@ -1,27 +1,21 @@
-const modalBackdrop =
-    document.getElementById("modalBackdrop");
+// =====================================================
+// NOVEX STORE - COMPLETE SCRIPT
+// =====================================================
 
-const modalRankTag =
-    document.getElementById("modalRankTag");
 
-const modalRankName =
-    document.getElementById("modalRankName");
+// =====================================================
+// ELEMENTS
+// =====================================================
 
-const modalPrice =
-    document.getElementById("modalPrice");
+const modalBackdrop = document.getElementById("modalBackdrop");
+const modalRankTag = document.getElementById("modalRankTag");
+const modalRankName = document.getElementById("modalRankName");
+const modalPrice = document.getElementById("modalPrice");
 
-const ignInput =
-    document.getElementById("ignInput");
-
-const modalError =
-    document.getElementById("modalError");
-
-const modalSubmit =
-    document.getElementById("modalSubmit");
-
-const modalClose =
-    document.getElementById("modalClose");
-
+const ignInput = document.getElementById("ignInput");
+const modalError = document.getElementById("modalError");
+const modalSubmit = document.getElementById("modalSubmit");
+const modalClose = document.getElementById("modalClose");
 
 const paymentSection =
     document.getElementById("paymentSection");
@@ -39,122 +33,221 @@ const paymentSubmit =
     document.getElementById("paymentSubmit");
 
 
+// =====================================================
+// SELECTED ORDER
+// =====================================================
+
 let selectedRank = "";
 let selectedPrice = 0;
-// ===============================
-// OPEN PURCHASE MODAL
-// ===============================
+
+
+// =====================================================
+// CLOUDFLARE WORKER URL
+// =====================================================
+
+const API_URL =
+    "https://novex-store-api.jainprathmesh031.workers.dev";
+
+
+// =====================================================
+// OPEN PURCHASE POPUP
+// =====================================================
 
 function buyRank(rank, price) {
+
+    console.log("NOVEX: buyRank called");
+    console.log("Rank:", rank);
+    console.log("Price:", price);
+
 
     selectedRank = rank;
     selectedPrice = price;
 
-    modalRankName.textContent = rank;
-    modalRankTag.textContent = rank;
 
-    modalPrice.textContent =
-        "₹" + price.toLocaleString("en-IN");
+    // -----------------------------------------
+    // Set rank information
+    // -----------------------------------------
 
-    ignInput.value = "";
+    if (modalRankName) {
+        modalRankName.textContent = rank;
+    }
 
-    modalError.textContent =
-        "Enter the exact username you use to join the server.";
+    if (modalRankTag) {
+        modalRankTag.textContent = rank;
+    }
 
-    modalError.classList.remove("show");
+    if (modalPrice) {
+        modalPrice.textContent =
+            "₹" + Number(price).toLocaleString("en-IN");
+    }
 
-    // Hide payment section when opening a new purchase
+
+    // -----------------------------------------
+    // Reset IGN
+    // -----------------------------------------
+
+    if (ignInput) {
+        ignInput.value = "";
+    }
+
+
+    // -----------------------------------------
+    // Reset error
+    // -----------------------------------------
+
+    if (modalError) {
+
+        modalError.textContent =
+            "Enter the exact username you use to join the server.";
+
+        modalError.classList.remove("show");
+    }
+
+
+    // -----------------------------------------
+    // Hide payment section
+    // -----------------------------------------
+
     if (paymentSection) {
         paymentSection.style.display = "none";
     }
 
-    // Show the Continue to Payment button
-    modalSubmit.style.display = "block";
 
-    // Reset payment button
-    paymentSubmit.disabled = false;
-    paymentSubmit.textContent =
-        "I've Completed Payment";
+    // -----------------------------------------
+    // Show Continue button
+    // -----------------------------------------
 
-    utrInput.value = "";
+    if (modalSubmit) {
 
-    paymentError.classList.remove("show");
+        modalSubmit.style.display = "block";
 
-    modalBackdrop.classList.add("active");
+        modalSubmit.disabled = false;
+
+        modalSubmit.textContent =
+            "Continue to payment";
+    }
+
+
+    // -----------------------------------------
+    // Reset payment section
+    // -----------------------------------------
+
+    if (paymentAmount) {
+
+        paymentAmount.textContent =
+            "₹" + Number(price).toLocaleString("en-IN");
+    }
+
+
+    if (utrInput) {
+        utrInput.value = "";
+    }
+
+
+    if (paymentError) {
+        paymentError.classList.remove("show");
+    }
+
+
+    if (paymentSubmit) {
+
+        paymentSubmit.disabled = false;
+
+        paymentSubmit.textContent =
+            "I've Completed Payment";
+    }
+
+
+    // -----------------------------------------
+    // OPEN MODAL
+    // -----------------------------------------
+
+    if (modalBackdrop) {
+
+        modalBackdrop.classList.add("active");
+
+    } else {
+
+        console.error(
+            "NOVEX ERROR: modalBackdrop not found."
+        );
+
+        return;
+    }
+
+
+    // -----------------------------------------
+    // Focus username field
+    // -----------------------------------------
 
     setTimeout(function () {
-        ignInput.focus();
-    }, 100);
-}
 
-// ======================================
-// OPEN PURCHASE MODAL
-// ======================================
+        if (ignInput) {
+            ignInput.focus();
+        }
 
-function buyRank(rank, price) {
-
-    selectedRank = rank;
-    selectedPrice = price;
-
-    modalRankName.textContent = rank;
-    modalRankTag.textContent = rank;
-
-    modalPrice.textContent =
-        "₹" + price.toLocaleString("en-IN");
-
-    ignInput.value = "";
-
-    modalError.textContent =
-        "Enter the exact username you use to join the server.";
-
-    modalError.classList.remove("show");
-
-    modalSubmit.style.display = "block";
-
-    modalBackdrop.classList.add("active");
-
-    setTimeout(function () {
-
-        ignInput.focus();
-
-    }, 100);
+    }, 150);
 
 }
 
-// ======================================
-// CLOSE MODAL
-// ======================================
+
+// =====================================================
+// CLOSE POPUP
+// =====================================================
 
 function closeModal() {
 
-    modalBackdrop.classList.remove("active");
+    if (modalBackdrop) {
+
+        modalBackdrop.classList.remove("active");
+
+    }
 
 }
 
 
-// Close button
-modalClose.addEventListener(
-    "click",
-    closeModal
-);
+// =====================================================
+// CLOSE BUTTON
+// =====================================================
+
+if (modalClose) {
+
+    modalClose.addEventListener(
+        "click",
+        closeModal
+    );
+
+}
 
 
-// Click outside modal
-modalBackdrop.addEventListener(
-    "click",
-    function (event) {
+// =====================================================
+// CLICK OUTSIDE MODAL
+// =====================================================
 
-        if (event.target === modalBackdrop) {
+if (modalBackdrop) {
 
-            closeModal();
+    modalBackdrop.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target === modalBackdrop
+            ) {
+
+                closeModal();
+
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
-// Escape key
+// =====================================================
+// ESCAPE KEY
+// =====================================================
+
 document.addEventListener(
     "keydown",
     function (event) {
@@ -169,339 +262,394 @@ document.addEventListener(
 );
 
 
-// ======================================
+// =====================================================
 // CONTINUE TO PAYMENT
-// ======================================
+// =====================================================
 
-modalSubmit.addEventListener(
-    "click",
-    function () {
+if (modalSubmit) {
 
-        const ign =
-            ignInput.value.trim();
+    modalSubmit.addEventListener(
+        "click",
+        function () {
 
+            const ign =
+                ignInput.value.trim();
 
-        // Empty username
-        if (!ign) {
 
-            modalError.textContent =
-                "Please enter your Minecraft username.";
+            // ---------------------------------
+            // IGN EMPTY
+            // ---------------------------------
 
-            modalError.classList.add("show");
+            if (!ign) {
 
-            ignInput.focus();
+                modalError.textContent =
+                    "Please enter your Minecraft username.";
 
-            return;
+                modalError.classList.add("show");
 
-        }
-
-
-        // Username length
-        if (
-            ign.length < 3 ||
-            ign.length > 16
-        ) {
-
-            modalError.textContent =
-                "Please enter a valid Minecraft username.";
-
-            modalError.classList.add("show");
-
-            ignInput.focus();
-
-            return;
-
-        }
-
-
-        // Username characters
-        if (!/^[A-Za-z0-9_]+$/.test(ign)) {
-
-            modalError.textContent =
-                "Username can only contain letters, numbers and underscores.";
-
-            modalError.classList.add("show");
-
-            ignInput.focus();
-
-            return;
-
-        }
-
-
-        // Username is valid
-        modalError.classList.remove("show");
-
-
-        // Show correct payment amount
-        paymentAmount.textContent =
-            "₹" +
-            selectedPrice.toLocaleString("en-IN");
-
-
-        // Show payment section
-        paymentSection.style.display = "block";
-
-
-        // Hide Continue button
-        modalSubmit.style.display = "none";
-
-
-        // Clear UTR
-        utrInput.value = "";
-
-        paymentError.classList.remove("show");
-
-
-        // Scroll payment section into view
-        paymentSection.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-
-        // Focus UTR after QR appears
-        setTimeout(function () {
-
-            utrInput.focus();
-
-        }, 500);
-
-    }
-);
-
-
-// ======================================
-// PAYMENT SUBMISSION
-// ======================================
-
-paymentSubmit.addEventListener(
-    "click",
-    async function () {
-
-        const utr = utrInput.value.trim();
-
-        // ==============================
-        // CHECK UTR
-        // ==============================
-
-        if (!utr) {
-
-            paymentError.textContent =
-                "Please enter your UTR / Transaction ID.";
-
-            paymentError.classList.add("show");
-
-            utrInput.focus();
-
-            return;
-        }
-
-
-        if (utr.length < 6) {
-
-            paymentError.textContent =
-                "Please enter a valid UTR / Transaction ID.";
-
-            paymentError.classList.add("show");
-
-            utrInput.focus();
-
-            return;
-        }
-
-
-        paymentError.classList.remove("show");
-
-
-        // ==============================
-        // DISABLE BUTTON
-        // ==============================
-
-        paymentSubmit.disabled = true;
-
-        paymentSubmit.textContent =
-            "Submitting Order...";
-
-
-        // ==============================
-        // SEND ORDER TO NOVEX API
-        // ==============================
-
-        try {
-
-            const response = await fetch(
-                "https://novex-store-api.jainprathmesh031.workers.dev/api/order",
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify({
-
-                        minecraft_ign:
-                            ignInput.value.trim(),
-
-                        rank:
-                            selectedRank,
-
-                        utr:
-                            utr
-
-                    })
-
-                }
-            );
-
-
-            const result =
-                await response.json();
-
-
-            // ==============================
-            // API ERROR
-            // ==============================
-
-            if (!response.ok || !result.success) {
-
-                paymentError.textContent =
-                    result.error ||
-                    "Unable to submit your order.";
-
-                paymentError.classList.add("show");
-
-                paymentSubmit.disabled = false;
-
-                paymentSubmit.textContent =
-                    "I've Completed Payment";
+                ignInput.focus();
 
                 return;
             }
 
 
-            // ==============================
-            // SUCCESS
-            // ==============================
+            // ---------------------------------
+            // IGN LENGTH
+            // ---------------------------------
 
-            paymentSubmit.textContent =
-                "Order Submitted ✓";
+            if (
+                ign.length < 3 ||
+                ign.length > 16
+            ) {
 
+                modalError.textContent =
+                    "Please enter a valid Minecraft username.";
 
-            alert(
+                modalError.classList.add("show");
 
-                "✅ ORDER SUBMITTED!\n\n" +
+                ignInput.focus();
 
-                "Order ID: " +
-                result.order_id +
-
-                "\n\nRank: " +
-                result.rank +
-
-                "\nAmount: ₹" +
-                result.amount +
-
-                "\nMinecraft IGN: " +
-                result.minecraft_ign +
-
-                "\n\nStatus: PENDING\n\n" +
-
-                "Your payment will be verified before " +
-                "the rank is delivered."
-
-            );
+                return;
+            }
 
 
-            // ==============================
-            // CLOSE MODAL
-            // ==============================
+            // ---------------------------------
+            // IGN CHARACTERS
+            // ---------------------------------
 
-            closeModal();
+            if (
+                !/^[A-Za-z0-9_]+$/.test(ign)
+            ) {
 
+                modalError.textContent =
+                    "Username can only contain letters, numbers and underscores.";
 
-        } catch (error) {
+                modalError.classList.add("show");
 
-            console.error(
-                "NOVEX API ERROR:",
-                error
-            );
+                ignInput.focus();
 
-
-            paymentError.textContent =
-                "Unable to connect to NOVEX Store. Please try again.";
-
-            paymentError.classList.add("show");
+                return;
+            }
 
 
-            paymentSubmit.disabled = false;
+            // ---------------------------------
+            // VALID
+            // ---------------------------------
 
-            paymentSubmit.textContent =
-                "I've Completed Payment";
+            modalError.classList.remove("show");
+
+
+            // ---------------------------------
+            // SHOW PAYMENT SECTION
+            // ---------------------------------
+
+            if (paymentAmount) {
+
+                paymentAmount.textContent =
+                    "₹" +
+                    Number(selectedPrice)
+                        .toLocaleString("en-IN");
+
+            }
+
+
+            if (paymentSection) {
+
+                paymentSection.style.display =
+                    "block";
+
+            }
+
+
+            // ---------------------------------
+            // HIDE CONTINUE BUTTON
+            // ---------------------------------
+
+            modalSubmit.style.display =
+                "none";
+
+
+            // ---------------------------------
+            // RESET UTR
+            // ---------------------------------
+
+            if (utrInput) {
+                utrInput.value = "";
+            }
+
+
+            if (paymentError) {
+                paymentError.classList.remove("show");
+            }
+
+
+            // ---------------------------------
+            // FOCUS UTR
+            // ---------------------------------
+
+            if (utrInput) {
+
+                setTimeout(function () {
+
+                    utrInput.focus();
+
+                }, 100);
+
+            }
 
         }
+    );
 
-    }
-);
+}
 
-        // UTR too short
-        if (utr.length < 6) {
 
-            paymentError.textContent =
-                "Please enter a valid UTR / Transaction ID.";
+// =====================================================
+// SUBMIT PAYMENT / UTR
+// =====================================================
 
-            paymentError.classList.add("show");
+if (paymentSubmit) {
 
-            utrInput.focus();
+    paymentSubmit.addEventListener(
+        "click",
+        async function () {
 
-            return;
+            const utr =
+                utrInput.value.trim();
+
+
+            // ---------------------------------
+            // UTR EMPTY
+            // ---------------------------------
+
+            if (!utr) {
+
+                paymentError.textContent =
+                    "Please enter your UTR / Transaction ID.";
+
+                paymentError.classList.add("show");
+
+                utrInput.focus();
+
+                return;
+            }
+
+
+            // ---------------------------------
+            // UTR TOO SHORT
+            // ---------------------------------
+
+            if (utr.length < 6) {
+
+                paymentError.textContent =
+                    "Please enter a valid UTR / Transaction ID.";
+
+                paymentError.classList.add("show");
+
+                utrInput.focus();
+
+                return;
+            }
+
+
+            // ---------------------------------
+            // UTR TOO LONG
+            // ---------------------------------
+
+            if (utr.length > 50) {
+
+                paymentError.textContent =
+                    "UTR / Transaction ID is too long.";
+
+                paymentError.classList.add("show");
+
+                utrInput.focus();
+
+                return;
+            }
+
+
+            paymentError.classList.remove("show");
+
+
+            // ---------------------------------
+            // DISABLE BUTTON
+            // ---------------------------------
+
+            paymentSubmit.disabled = true;
+
+            paymentSubmit.textContent =
+                "Submitting Order...";
+
+
+            // ---------------------------------
+            // SEND TO CLOUDFLARE
+            // ---------------------------------
+
+            try {
+
+                console.log(
+                    "NOVEX: Sending order..."
+                );
+
+
+                const response =
+                    await fetch(
+                        API_URL + "/api/order",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                minecraft_ign:
+                                    ignInput.value.trim(),
+
+                                rank:
+                                    selectedRank,
+
+                                utr:
+                                    utr
+
+                            })
+
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                console.log(
+                    "NOVEX API response:",
+                    result
+                );
+
+
+                // ---------------------------------
+                // API ERROR
+                // ---------------------------------
+
+                if (
+                    !response.ok ||
+                    !result.success
+                ) {
+
+                    paymentError.textContent =
+                        result.error ||
+                        "Unable to submit your order.";
+
+                    paymentError.classList.add("show");
+
+
+                    paymentSubmit.disabled =
+                        false;
+
+                    paymentSubmit.textContent =
+                        "I've Completed Payment";
+
+                    return;
+                }
+
+
+                // ---------------------------------
+                // SUCCESS
+                // ---------------------------------
+
+                paymentSubmit.textContent =
+                    "Order Submitted ✓";
+
+
+                alert(
+
+                    "✅ ORDER SUBMITTED!\n\n" +
+
+                    "Order ID: " +
+                    result.order_id +
+
+                    "\n\nRank: " +
+                    result.rank +
+
+                    "\nAmount: ₹" +
+                    result.amount +
+
+                    "\nMinecraft IGN: " +
+                    result.minecraft_ign +
+
+                    "\n\nStatus: PENDING\n\n" +
+
+                    "Your payment will be verified before " +
+                    "the rank is delivered."
+
+                );
+
+
+                // ---------------------------------
+                // CLOSE MODAL
+                // ---------------------------------
+
+                closeModal();
+
+
+            } catch (error) {
+
+                console.error(
+                    "NOVEX API ERROR:",
+                    error
+                );
+
+
+                paymentError.textContent =
+                    "Unable to connect to NOVEX Store. Please try again.";
+
+                paymentError.classList.add("show");
+
+
+                paymentSubmit.disabled =
+                    false;
+
+                paymentSubmit.textContent =
+                    "I've Completed Payment";
+
+            }
 
         }
+    );
+
+}
 
 
-        // Valid UTR
-        paymentError.classList.remove("show");
-
-
-        alert(
-            "Payment submitted!\n\n" +
-
-            "Rank: " +
-            selectedRank +
-
-            "\n" +
-
-            "Amount: ₹" +
-            selectedPrice.toLocaleString("en-IN") +
-
-            "\n" +
-
-            "Minecraft IGN: " +
-            ignInput.value.trim() +
-
-            "\n" +
-
-            "UTR: " +
-            utr +
-
-            "\n\n" +
-
-            "Your payment will be verified before the rank is delivered."
-        );
-
-    }
-);
-
-
-// ======================================
+// =====================================================
 // DEBUG
-// ======================================
+// =====================================================
 
 console.log(
-    "NOVEX SCRIPT LOADED"
+    "================================="
+);
+
+console.log(
+    "NOVEX STORE SCRIPT LOADED"
 );
 
 console.log(
     "buyRank:",
     typeof buyRank
+);
+
+console.log(
+    "modalBackdrop:",
+    modalBackdrop
+);
+
+console.log(
+    "paymentSection:",
+    paymentSection
+);
+
+console.log(
+    "================================="
 );
