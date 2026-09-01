@@ -45,8 +45,6 @@ function buyRank(rank, price) {
         "Enter the exact username you use to join the server.";
 
     modalError.classList.remove("show");
-paymentAmountNumber.textContent =
-    selectedPrice.toLocaleString("en-IN");
 
 paymentSection.style.display = "block";
 
