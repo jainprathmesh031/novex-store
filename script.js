@@ -233,13 +233,14 @@ modalSubmit.addEventListener(
 
 paymentSubmit.addEventListener(
     "click",
-    function () {
+    async function () {
 
-        const utr =
-            utrInput.value.trim();
+        const utr = utrInput.value.trim();
 
+        // ==============================
+        // CHECK UTR
+        // ==============================
 
-        // Empty UTR
         if (!utr) {
 
             paymentError.textContent =
@@ -250,9 +251,154 @@ paymentSubmit.addEventListener(
             utrInput.focus();
 
             return;
+        }
+
+
+        if (utr.length < 6) {
+
+            paymentError.textContent =
+                "Please enter a valid UTR / Transaction ID.";
+
+            paymentError.classList.add("show");
+
+            utrInput.focus();
+
+            return;
+        }
+
+
+        paymentError.classList.remove("show");
+
+
+        // ==============================
+        // DISABLE BUTTON
+        // ==============================
+
+        paymentSubmit.disabled = true;
+
+        paymentSubmit.textContent =
+            "Submitting Order...";
+
+
+        // ==============================
+        // SEND ORDER TO NOVEX API
+        // ==============================
+
+        try {
+
+            const response = await fetch(
+                "https://novex-store-api.jainprathmesh031.workers.dev/api/order",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        minecraft_ign:
+                            ignInput.value.trim(),
+
+                        rank:
+                            selectedRank,
+
+                        utr:
+                            utr
+
+                    })
+
+                }
+            );
+
+
+            const result =
+                await response.json();
+
+
+            // ==============================
+            // API ERROR
+            // ==============================
+
+            if (!response.ok || !result.success) {
+
+                paymentError.textContent =
+                    result.error ||
+                    "Unable to submit your order.";
+
+                paymentError.classList.add("show");
+
+                paymentSubmit.disabled = false;
+
+                paymentSubmit.textContent =
+                    "I've Completed Payment";
+
+                return;
+            }
+
+
+            // ==============================
+            // SUCCESS
+            // ==============================
+
+            paymentSubmit.textContent =
+                "Order Submitted ✓";
+
+
+            alert(
+
+                "✅ ORDER SUBMITTED!\n\n" +
+
+                "Order ID: " +
+                result.order_id +
+
+                "\n\nRank: " +
+                result.rank +
+
+                "\nAmount: ₹" +
+                result.amount +
+
+                "\nMinecraft IGN: " +
+                result.minecraft_ign +
+
+                "\n\nStatus: PENDING\n\n" +
+
+                "Your payment will be verified before " +
+                "the rank is delivered."
+
+            );
+
+
+            // ==============================
+            // CLOSE MODAL
+            // ==============================
+
+            closeModal();
+
+
+        } catch (error) {
+
+            console.error(
+                "NOVEX API ERROR:",
+                error
+            );
+
+
+            paymentError.textContent =
+                "Unable to connect to NOVEX Store. Please try again.";
+
+            paymentError.classList.add("show");
+
+
+            paymentSubmit.disabled = false;
+
+            paymentSubmit.textContent =
+                "I've Completed Payment";
 
         }
 
+    }
+);
 
         // UTR too short
         if (utr.length < 6) {
