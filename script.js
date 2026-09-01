@@ -1,16 +1,34 @@
-const modalBackdrop = document.getElementById("modalBackdrop");
-const modalRankTag = document.getElementById("modalRankTag");
-const modalRankName = document.getElementById("modalRankName");
-const modalPrice = document.getElementById("modalPrice");
-const ignInput = document.getElementById("ignInput");
-const modalError = document.getElementById("modalError");
-const modalSubmit = document.getElementById("modalSubmit");
-const modalClose = document.getElementById("modalClose");
+const modalBackdrop =
+    document.getElementById("modalBackdrop");
+
+const modalRankTag =
+    document.getElementById("modalRankTag");
+
+const modalRankName =
+    document.getElementById("modalRankName");
+
+const modalPrice =
+    document.getElementById("modalPrice");
+
+const ignInput =
+    document.getElementById("ignInput");
+
+const modalError =
+    document.getElementById("modalError");
+
+const modalSubmit =
+    document.getElementById("modalSubmit");
+
+const modalClose =
+    document.getElementById("modalClose");
+
+
 const paymentSection =
     document.getElementById("paymentSection");
 
 const paymentAmount =
     document.getElementById("paymentAmount");
+
 const utrInput =
     document.getElementById("utrInput");
 
@@ -19,13 +37,15 @@ const paymentError =
 
 const paymentSubmit =
     document.getElementById("paymentSubmit");
+
+
 let selectedRank = "";
 let selectedPrice = 0;
 
 
-// ===============================
+// ======================================
 // OPEN PURCHASE MODAL
-// ===============================
+// ======================================
 
 function buyRank(rank, price) {
 
@@ -45,26 +65,36 @@ function buyRank(rank, price) {
 
     modalError.classList.remove("show");
 
-paymentSection.style.display = "block";
 
-modalSubmit.style.display = "none";
+    // Hide payment section when opening a new purchase
+    paymentSection.style.display = "none";
 
-utrInput.value = "";
+    // Show Continue to Payment button
+    modalSubmit.style.display = "block";
 
-paymentError.classList.remove("show");
+    // Clear old UTR
+    utrInput.value = "";
 
-utrInput.focus();
+    paymentError.classList.remove("show");
+
+
+    // Open popup
     modalBackdrop.classList.add("active");
 
+
+    // Focus username field
     setTimeout(function () {
+
         ignInput.focus();
+
     }, 100);
+
 }
 
 
-// ===============================
+// ======================================
 // CLOSE MODAL
-// ===============================
+// ======================================
 
 function closeModal() {
 
@@ -80,13 +110,15 @@ modalClose.addEventListener(
 );
 
 
-// Click outside
+// Click outside modal
 modalBackdrop.addEventListener(
     "click",
     function (event) {
 
         if (event.target === modalBackdrop) {
+
             closeModal();
+
         }
 
     }
@@ -99,23 +131,28 @@ document.addEventListener(
     function (event) {
 
         if (event.key === "Escape") {
+
             closeModal();
+
         }
 
     }
 );
 
 
-// ===============================
+// ======================================
 // CONTINUE TO PAYMENT
-// ===============================
+// ======================================
 
 modalSubmit.addEventListener(
     "click",
     function () {
 
-        const ign = ignInput.value.trim();
+        const ign =
+            ignInput.value.trim();
 
+
+        // Empty username
         if (!ign) {
 
             modalError.textContent =
@@ -126,9 +163,11 @@ modalSubmit.addEventListener(
             ignInput.focus();
 
             return;
+
         }
 
 
+        // Username length
         if (
             ign.length < 3 ||
             ign.length > 16
@@ -142,9 +181,11 @@ modalSubmit.addEventListener(
             ignInput.focus();
 
             return;
+
         }
 
 
+        // Username characters
         if (!/^[A-Za-z0-9_]+$/.test(ign)) {
 
             modalError.textContent =
@@ -155,33 +196,65 @@ modalSubmit.addEventListener(
             ignInput.focus();
 
             return;
+
         }
 
 
+        // Username is valid
         modalError.classList.remove("show");
 
 
-    paymentAmount.textContent =
-    "₹" + selectedPrice.toLocaleString("en-IN");
+        // Show correct payment amount
+        paymentAmount.textContent =
+            "₹" +
+            selectedPrice.toLocaleString("en-IN");
 
-paymentSection.style.display = "block";
 
-modalSubmit.style.display = "none";
+        // Show payment section
+        paymentSection.style.display = "block";
 
-utrInput.value = "";
 
-paymentError.classList.remove("show");
+        // Hide Continue button
+        modalSubmit.style.display = "none";
 
-utrInput.focus();
+
+        // Clear UTR
+        utrInput.value = "";
+
+        paymentError.classList.remove("show");
+
+
+        // Scroll payment section into view
+        paymentSection.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+
+        // Focus UTR after QR appears
+        setTimeout(function () {
+
+            utrInput.focus();
+
+        }, 500);
+
     }
 );
+
+
+// ======================================
+// PAYMENT SUBMISSION
+// ======================================
 
 paymentSubmit.addEventListener(
     "click",
     function () {
 
-        const utr = utrInput.value.trim();
+        const utr =
+            utrInput.value.trim();
 
+
+        // Empty UTR
         if (!utr) {
 
             paymentError.textContent =
@@ -192,9 +265,11 @@ paymentSubmit.addEventListener(
             utrInput.focus();
 
             return;
+
         }
 
 
+        // UTR too short
         if (utr.length < 6) {
 
             paymentError.textContent =
@@ -205,28 +280,53 @@ paymentSubmit.addEventListener(
             utrInput.focus();
 
             return;
+
         }
 
 
+        // Valid UTR
         paymentError.classList.remove("show");
 
 
         alert(
             "Payment submitted!\n\n" +
-            "Rank: " + selectedRank +
+
+            "Rank: " +
+            selectedRank +
+
             "\n" +
+
             "Amount: ₹" +
             selectedPrice.toLocaleString("en-IN") +
+
             "\n" +
+
             "Minecraft IGN: " +
             ignInput.value.trim() +
+
             "\n" +
-            "UTR: " + utr +
+
+            "UTR: " +
+            utr +
+
             "\n\n" +
+
             "Your payment will be verified before the rank is delivered."
         );
 
     }
 );
-console.log("NOVEX SCRIPT LOADED");
-console.log("buyRank:", typeof buyRank);
+
+
+// ======================================
+// DEBUG
+// ======================================
+
+console.log(
+    "NOVEX SCRIPT LOADED"
+);
+
+console.log(
+    "buyRank:",
+    typeof buyRank
+);
