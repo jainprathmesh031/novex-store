@@ -45,7 +45,18 @@ function buyRank(rank, price) {
         "Enter the exact username you use to join the server.";
 
     modalError.classList.remove("show");
+paymentAmountNumber.textContent =
+    selectedPrice.toLocaleString("en-IN");
 
+paymentSection.style.display = "block";
+
+modalSubmit.style.display = "none";
+
+utrInput.value = "";
+
+paymentError.classList.remove("show");
+
+utrInput.focus();
     modalBackdrop.classList.add("active");
 
     setTimeout(function () {
@@ -168,6 +179,57 @@ utrInput.focus();
     }
 );
 
+paymentSubmit.addEventListener(
+    "click",
+    function () {
 
+        const utr = utrInput.value.trim();
+
+        if (!utr) {
+
+            paymentError.textContent =
+                "Please enter your UTR / Transaction ID.";
+
+            paymentError.classList.add("show");
+
+            utrInput.focus();
+
+            return;
+        }
+
+
+        if (utr.length < 6) {
+
+            paymentError.textContent =
+                "Please enter a valid UTR / Transaction ID.";
+
+            paymentError.classList.add("show");
+
+            utrInput.focus();
+
+            return;
+        }
+
+
+        paymentError.classList.remove("show");
+
+
+        alert(
+            "Payment submitted!\n\n" +
+            "Rank: " + selectedRank +
+            "\n" +
+            "Amount: ₹" +
+            selectedPrice.toLocaleString("en-IN") +
+            "\n" +
+            "Minecraft IGN: " +
+            ignInput.value.trim() +
+            "\n" +
+            "UTR: " + utr +
+            "\n\n" +
+            "Your payment will be verified before the rank is delivered."
+        );
+
+    }
+);
 console.log("NOVEX SCRIPT LOADED");
 console.log("buyRank:", typeof buyRank);
