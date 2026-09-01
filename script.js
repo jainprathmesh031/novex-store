@@ -6,7 +6,20 @@ const ignInput = document.getElementById("ignInput");
 const modalError = document.getElementById("modalError");
 const modalSubmit = document.getElementById("modalSubmit");
 const modalClose = document.getElementById("modalClose");
+const paymentSection =
+    document.getElementById("paymentSection");
 
+const paymentAmount =
+    document.getElementById("paymentAmount");
+
+const utrInput =
+    document.getElementById("utrInput");
+
+const paymentError =
+    document.getElementById("paymentError");
+
+const paymentSubmit =
+    document.getElementById("paymentSubmit");
 let selectedRank = "";
 let selectedPrice = 0;
 
@@ -140,16 +153,18 @@ modalSubmit.addEventListener(
         modalError.classList.remove("show");
 
 
-        alert(
-            "Order selected!\n\n" +
-            "Rank: " + selectedRank +
-            "\n" +
-            "Price: ₹" +
-            selectedPrice.toLocaleString("en-IN") +
-            "\n" +
-            "Minecraft IGN: " + ign
-        );
+    paymentAmount.textContent =
+    "₹" + selectedPrice.toLocaleString("en-IN");
 
+paymentSection.style.display = "block";
+
+modalSubmit.style.display = "none";
+
+utrInput.value = "";
+
+paymentError.classList.remove("show");
+
+utrInput.focus();
     }
 );
 
