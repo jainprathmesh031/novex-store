@@ -65,24 +65,10 @@ function buyRank(rank, price) {
 
     modalError.classList.remove("show");
 
-
-    // Hide payment section when opening a new purchase
-    paymentSection.style.display = "none";
-
-    // Show Continue to Payment button
     modalSubmit.style.display = "block";
 
-    // Clear old UTR
-    utrInput.value = "";
-
-    paymentError.classList.remove("show");
-
-
-    // Open popup
     modalBackdrop.classList.add("active");
 
-
-    // Focus username field
     setTimeout(function () {
 
         ignInput.focus();
@@ -90,7 +76,6 @@ function buyRank(rank, price) {
     }, 100);
 
 }
-
 
 // ======================================
 // CLOSE MODAL
