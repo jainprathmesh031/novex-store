@@ -18,22 +18,20 @@
             box-sizing: border-box;
         }
 
-
         body {
 
             margin: 0;
 
             min-height: 100vh;
 
+            background: #07070b;
+
+            color: #ffffff;
+
             font-family:
                 Arial,
                 Helvetica,
                 sans-serif;
-
-            background:
-                #07070b;
-
-            color: #ffffff;
 
             padding: 30px 16px;
 
@@ -51,45 +49,42 @@
         }
 
 
-        .login-card,
-        .dashboard {
-
-            background:
-                #111118;
-
-            border:
-                1px solid #292936;
-
-            border-radius: 18px;
-
-            padding: 28px;
-
-            box-shadow:
-                0 20px 60px
-                rgba(0,0,0,.45);
-
-        }
-
+        /* =========================
+           LOGIN
+        ========================= */
 
         .login-card {
 
-            max-width: 450px;
+            width: 100%;
 
-            margin:
-                100px auto;
+            max-width: 430px;
+
+            margin: 100px auto;
+
+            padding: 35px;
+
+            background: #111118;
+
+            border: 1px solid #292936;
+
+            border-radius: 20px;
 
             text-align: center;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,.45);
 
         }
 
 
         .logo {
 
-            font-size: 32px;
+            font-size: 34px;
 
             font-weight: 900;
 
-            letter-spacing: 4px;
+            letter-spacing: 5px;
 
             margin-bottom: 8px;
 
@@ -100,51 +95,37 @@
 
             color: #9999a8;
 
-            margin-bottom: 30px;
+            font-size: 14px;
+
+            margin-bottom: 28px;
 
         }
 
 
-        input {
+        .input {
 
             width: 100%;
 
-            padding: 14px 16px;
+            padding: 15px;
+
+            border-radius: 10px;
+
+            border: 1px solid #30303c;
 
             background: #09090e;
 
-            border:
-                1px solid #30303c;
-
             color: white;
-
-            border-radius: 10px;
-
-            outline: none;
 
             font-size: 15px;
 
+            outline: none;
+
         }
 
 
-        input:focus {
+        .input:focus {
 
             border-color: #7777ff;
-
-        }
-
-
-        button {
-
-            border: 0;
-
-            border-radius: 10px;
-
-            padding: 13px 20px;
-
-            font-weight: 700;
-
-            cursor: pointer;
 
         }
 
@@ -155,9 +136,21 @@
 
             margin-top: 15px;
 
-            background: #ffffff;
+            padding: 14px;
 
-            color: #000000;
+            border: none;
+
+            border-radius: 10px;
+
+            background: white;
+
+            color: black;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
 
         }
 
@@ -169,16 +162,33 @@
         }
 
 
-        .error {
+        .login-button:disabled {
 
-            color: #ff6b6b;
+            opacity: .5;
 
-            margin-top: 15px;
-
-            display: none;
+            cursor: wait;
 
         }
 
+
+        .error {
+
+            display: none;
+
+            margin-top: 15px;
+
+            color: #ff7070;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =========================
+           DASHBOARD
+        ========================= */
 
         .dashboard {
 
@@ -191,37 +201,79 @@
 
             display: flex;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
             align-items: center;
 
             gap: 15px;
 
-            margin-bottom: 25px;
-
             flex-wrap: wrap;
+
+            margin-bottom: 25px;
 
         }
 
 
         .title {
 
-            font-size: 28px;
+            font-size: 30px;
+
+            font-weight: 900;
+
+        }
+
+
+        .top-buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+        }
+
+
+        button {
+
+            cursor: pointer;
+
+        }
+
+
+        .refresh-button,
+        .logout-button {
+
+            padding: 12px 18px;
+
+            border-radius: 10px;
+
+            border: none;
 
             font-weight: 800;
 
         }
 
 
-        .logout {
+        .refresh-button {
 
-            background: #22222c;
+            background: white;
+
+            color: black;
+
+        }
+
+
+        .logout-button {
+
+            background: #24242e;
 
             color: white;
 
         }
 
+
+        /* =========================
+           STATS
+        ========================= */
 
         .stats {
 
@@ -239,14 +291,13 @@
 
         .stat {
 
-            background: #0b0b10;
+            padding: 22px;
 
-            border:
-                1px solid #292936;
+            background: #111118;
 
-            border-radius: 14px;
+            border: 1px solid #292936;
 
-            padding: 20px;
+            border-radius: 15px;
 
         }
 
@@ -262,14 +313,18 @@
 
         .stat-number {
 
-            font-size: 30px;
+            font-size: 32px;
 
-            font-weight: 800;
+            font-weight: 900;
 
             margin-top: 8px;
 
         }
 
+
+        /* =========================
+           ORDERS
+        ========================= */
 
         .orders {
 
@@ -284,14 +339,13 @@
 
         .order {
 
-            background: #0b0b10;
-
-            border:
-                1px solid #292936;
-
-            border-radius: 14px;
-
             padding: 20px;
+
+            background: #111118;
+
+            border: 1px solid #292936;
+
+            border-radius: 15px;
 
         }
 
@@ -300,8 +354,7 @@
 
             display: flex;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
             align-items: center;
 
@@ -309,36 +362,36 @@
 
             flex-wrap: wrap;
 
-            margin-bottom: 15px;
+            margin-bottom: 16px;
 
         }
 
 
         .order-id {
 
-            font-weight: 800;
-
             font-size: 17px;
+
+            font-weight: 900;
 
         }
 
 
         .status {
 
-            padding: 6px 10px;
+            padding: 7px 12px;
 
             border-radius: 999px;
 
             font-size: 12px;
 
-            font-weight: 800;
+            font-weight: 900;
 
         }
 
 
         .pending {
 
-            background: #332900;
+            background: #3b3000;
 
             color: #ffd43b;
 
@@ -349,14 +402,14 @@
 
             background: #06351d;
 
-            color: #52e08a;
+            color: #55e38b;
 
         }
 
 
         .rejected {
 
-            background: #3b0b0b;
+            background: #3c0b0b;
 
             color: #ff7777;
 
@@ -372,23 +425,25 @@
 
             gap: 10px;
 
-            color: #ccccd6;
-
         }
 
 
         .detail {
 
-            background: #111118;
+            padding: 13px;
 
-            padding: 12px;
+            background: #0b0b10;
 
-            border-radius: 9px;
+            border-radius: 10px;
+
+            color: #ddddE5;
+
+            word-break: break-word;
 
         }
 
 
-        .detail strong {
+        .detail-label {
 
             display: block;
 
@@ -414,16 +469,30 @@
         }
 
 
-        .approve {
+        .approve-button,
+        .reject-button {
 
-            background: #1c9c58;
+            padding: 12px 18px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            font-weight: 800;
+
+        }
+
+
+        .approve-button {
+
+            background: #1d9c58;
 
             color: white;
 
         }
 
 
-        .reject {
+        .reject-button {
 
             background: #b83333;
 
@@ -432,33 +501,20 @@
         }
 
 
-        .refresh {
-
-            background: white;
-
-            color: black;
-
-        }
-
-
-        .empty {
-
-            text-align: center;
+        .empty,
+        .loading {
 
             padding: 50px 20px;
 
-            color: #888896;
-
-        }
-
-
-        .loading {
-
             text-align: center;
 
-            padding: 40px;
+            color: #888896;
 
-            color: #9999a8;
+            background: #111118;
+
+            border: 1px solid #292936;
+
+            border-radius: 15px;
 
         }
 
@@ -486,7 +542,8 @@
             }
 
 
-            .actions button {
+            .approve-button,
+            .reject-button {
 
                 width: 100%;
 
@@ -505,15 +562,19 @@
 <div class="container">
 
 
-    <!-- LOGIN -->
+    <!-- ==================================
+         LOGIN SCREEN
+    =================================== -->
 
     <div
         class="login-card"
         id="loginCard">
 
+
         <div class="logo">
             NOVEX
         </div>
+
 
         <div class="subtitle">
             Store Administration
@@ -521,9 +582,11 @@
 
 
         <input
-            type="password"
+            class="input"
             id="passwordInput"
-            placeholder="Admin password">
+            type="password"
+            placeholder="Enter admin password"
+            autocomplete="current-password">
 
 
         <button
@@ -539,15 +602,16 @@
             class="error"
             id="loginError">
 
-            Incorrect admin password.
-
         </div>
+
 
     </div>
 
 
 
-    <!-- DASHBOARD -->
+    <!-- ==================================
+         ADMIN DASHBOARD
+    =================================== -->
 
     <div
         class="dashboard"
@@ -556,6 +620,7 @@
 
         <div class="topbar">
 
+
             <div>
 
                 <div class="title">
@@ -563,17 +628,18 @@
                 </div>
 
                 <div class="subtitle">
-                    Order Management
+                    Store Order Management
                 </div>
 
             </div>
 
 
-            <div>
+            <div class="top-buttons">
+
 
                 <button
-                    class="refresh"
-                    onclick="loadOrders()">
+                    class="refresh-button"
+                    id="refreshButton">
 
                     ↻ Refresh
 
@@ -581,20 +647,24 @@
 
 
                 <button
-                    class="logout"
-                    onclick="logout()">
+                    class="logout-button"
+                    id="logoutButton">
 
                     Logout
 
                 </button>
 
+
             </div>
+
 
         </div>
 
 
 
-        <!-- STATS -->
+        <!-- ==================================
+             STATISTICS
+        =================================== -->
 
         <div class="stats">
 
@@ -619,7 +689,7 @@
             <div class="stat">
 
                 <div class="stat-label">
-                    Pending
+                    Pending Orders
                 </div>
 
                 <div
@@ -636,7 +706,7 @@
             <div class="stat">
 
                 <div class="stat-label">
-                    Approved
+                    Approved Orders
                 </div>
 
                 <div
@@ -654,7 +724,9 @@
 
 
 
-        <!-- ORDERS -->
+        <!-- ==================================
+             ORDERS
+        =================================== -->
 
         <div
             class="orders"
@@ -669,6 +741,7 @@
 
     </div>
 
+
 </div>
 
 
@@ -676,71 +749,125 @@
 <script>
 
 
-// ==========================================
-// CONFIG
-// ==========================================
+/* =========================================
+   CONFIGURATION
+========================================= */
+
 
 const API_URL =
     "https://novex-store-api.jainprathmesh031.workers.dev";
 
 
-// ==========================================
-// ADMIN PASSWORD
-// ==========================================
+/* =========================================
+   ADMIN PASSWORD
+========================================= */
+
 
 let adminPassword = "";
 
 
-// ==========================================
-// LOGIN
-// ==========================================
+/* =========================================
+   ELEMENTS
+========================================= */
 
-document
-    .getElementById("loginButton")
-    .addEventListener(
-        "click",
-        login
+
+const loginCard =
+    document.getElementById(
+        "loginCard"
     );
 
 
-document
-    .getElementById("passwordInput")
-    .addEventListener(
-        "keydown",
-        function(event) {
+const dashboard =
+    document.getElementById(
+        "dashboard"
+    );
 
-            if (
-                event.key === "Enter"
-            ) {
 
-                login();
+const passwordInput =
+    document.getElementById(
+        "passwordInput"
+    );
 
-            }
+
+const loginButton =
+    document.getElementById(
+        "loginButton"
+    );
+
+
+const loginError =
+    document.getElementById(
+        "loginError"
+    );
+
+
+const refreshButton =
+    document.getElementById(
+        "refreshButton"
+    );
+
+
+const logoutButton =
+    document.getElementById(
+        "logoutButton"
+    );
+
+
+const ordersContainer =
+    document.getElementById(
+        "orders"
+    );
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+
+loginButton.addEventListener(
+    "click",
+    login
+);
+
+
+/* =========================================
+   ENTER KEY LOGIN
+========================================= */
+
+
+passwordInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            login();
 
         }
-    );
+
+    }
+);
+
+
+/* =========================================
+   LOGIN
+========================================= */
 
 
 async function login() {
 
+
     const password =
-        document
-            .getElementById("passwordInput")
-            .value
-            .trim();
+        passwordInput.value;
 
 
     if (!password) {
 
-        document
-            .getElementById("loginError")
-            .textContent =
-                "Enter your admin password.";
-
-        document
-            .getElementById("loginError")
-            .style.display =
-                "block";
+        showLoginError(
+            "Please enter your admin password."
+        );
 
         return;
 
@@ -751,48 +878,84 @@ async function login() {
         password;
 
 
+    loginButton.disabled =
+        true;
+
+
+    loginButton.textContent =
+        "Checking...";
+
+
+    hideLoginError();
+
+
     const success =
         await loadOrders();
 
 
+    loginButton.disabled =
+        false;
+
+
+    loginButton.textContent =
+        "Login";
+
+
     if (success) {
 
-        document
-            .getElementById("loginCard")
-            .style.display =
-                "none";
 
-        document
-            .getElementById("dashboard")
-            .style.display =
-                "block";
+        loginCard.style.display =
+            "none";
+
+
+        dashboard.style.display =
+            "block";
+
 
     } else {
 
-        adminPassword = "";
 
-        document
-            .getElementById("loginError")
-            .textContent =
-                "Incorrect admin password.";
+        adminPassword =
+            "";
 
-        document
-            .getElementById("loginError")
-            .style.display =
-                "block";
 
     }
 
 }
 
 
-// ==========================================
-// LOAD ORDERS
-// ==========================================
+/* =========================================
+   LOAD ORDERS
+========================================= */
+
 
 async function loadOrders() {
 
+
+    console.log(
+        "================================"
+    );
+
+
+    console.log(
+        "NOVEX ADMIN: Loading orders"
+    );
+
+
+    console.log(
+        "Password present:",
+        adminPassword.length > 0
+    );
+
+
+    console.log(
+        "API:",
+        API_URL
+    );
+
+
     try {
+
 
         const response =
             await fetch(
@@ -802,10 +965,15 @@ async function loadOrders() {
 
                     method: "GET",
 
+                    cache: "no-store",
+
                     headers: {
 
                         "X-Admin-Password":
-                            adminPassword
+                            adminPassword,
+
+                        "Accept":
+                            "application/json"
 
                     }
 
@@ -813,40 +981,144 @@ async function loadOrders() {
             );
 
 
-        const result =
-            await response.json();
-
-
         console.log(
-            "ADMIN ORDERS:",
-            result
+            "HTTP status:",
+            response.status
         );
 
 
-        if (
-            !response.ok ||
-            !result.success
-        ) {
+        const responseText =
+            await response.text();
+
+
+        console.log(
+            "API response:",
+            responseText
+        );
+
+
+        let data;
+
+
+        try {
+
+            data =
+                JSON.parse(
+                    responseText
+                );
+
+        } catch (jsonError) {
+
+
+            showLoginError(
+                "The API returned an invalid response. Check the browser Console."
+            );
+
+
+            console.error(
+                "JSON ERROR:",
+                jsonError
+            );
+
 
             return false;
 
         }
 
 
-        displayOrders(
-            result.orders || []
+        /* =============================
+           SUCCESS
+        ============================= */
+
+
+        if (
+            response.ok &&
+            data.success
+        ) {
+
+
+            console.log(
+                "ADMIN LOGIN SUCCESS"
+            );
+
+
+            displayOrders(
+                Array.isArray(
+                    data.orders
+                )
+                    ? data.orders
+                    : []
+            );
+
+
+            return true;
+
+        }
+
+
+        /* =============================
+           UNAUTHORIZED
+        ============================= */
+
+
+        if (
+            response.status === 401
+        ) {
+
+
+            showLoginError(
+                "Password rejected by the Worker. Check that ADMIN_PASSWORD is the exact secret used by this Worker."
+            );
+
+
+            console.error(
+                "Worker returned 401 Unauthorized."
+            );
+
+
+            return false;
+
+        }
+
+
+        /* =============================
+           OTHER API ERROR
+        ============================= */
+
+
+        showLoginError(
+            "API error (" +
+            response.status +
+            "): " +
+            (
+                data.error ||
+                "Unknown error."
+            )
         );
 
 
-        return true;
+        console.error(
+            "API ERROR:",
+            data
+        );
+
+
+        return false;
 
 
     } catch (error) {
 
+
         console.error(
-            "ADMIN ERROR:",
+            "FETCH ERROR:",
             error
         );
+
+
+        showLoginError(
+            "Could not connect to the NOVEX API. Check the browser Console."
+        );
+
 
         return false;
 
@@ -855,17 +1127,14 @@ async function loadOrders() {
 }
 
 
-// ==========================================
-// DISPLAY ORDERS
-// ==========================================
-
-function displayOrders(orders) {
+/* =========================================
+   DISPLAY ORDERS
+========================================= */
 
 
-    const ordersContainer =
-        document.getElementById(
-            "orders"
-        );
+function displayOrders(
+    orders
+) {
 
 
     const total =
@@ -874,37 +1143,58 @@ function displayOrders(orders) {
 
     const pending =
         orders.filter(
-            order =>
-                order.status === "PENDING"
+            function(order) {
+
+                return String(
+                    order.status
+                ).toUpperCase()
+                === "PENDING";
+
+            }
         ).length;
 
 
     const approved =
         orders.filter(
-            order =>
-                order.status === "APPROVED"
+            function(order) {
+
+                return String(
+                    order.status
+                ).toUpperCase()
+                === "APPROVED";
+
+            }
         ).length;
 
 
     document
-        .getElementById("totalOrders")
+        .getElementById(
+            "totalOrders"
+        )
         .textContent =
             total;
 
 
     document
-        .getElementById("pendingOrders")
+        .getElementById(
+            "pendingOrders"
+        )
         .textContent =
             pending;
 
 
     document
-        .getElementById("approvedOrders")
+        .getElementById(
+            "approvedOrders"
+        )
         .textContent =
             approved;
 
 
-    if (!orders.length) {
+    if (
+        orders.length === 0
+    ) {
+
 
         ordersContainer.innerHTML = `
 
@@ -916,6 +1206,7 @@ function displayOrders(orders) {
 
         `;
 
+
         return;
 
     }
@@ -924,55 +1215,98 @@ function displayOrders(orders) {
     ordersContainer.innerHTML =
         orders
             .map(
-                order =>
-                    createOrderHTML(order)
+                createOrderHTML
             )
             .join("");
+
 
 }
 
 
-// ==========================================
-// CREATE ORDER CARD
-// ==========================================
+/* =========================================
+   CREATE ORDER HTML
+========================================= */
 
-function createOrderHTML(order) {
+
+function createOrderHTML(
+    order
+) {
 
 
     const status =
         String(
-            order.status || "PENDING"
-        ).toLowerCase();
+            order.status ||
+            "PENDING"
+        ).toUpperCase();
 
 
-    const buttons =
-        order.status === "PENDING"
+    let statusClass =
+        "pending";
 
-            ? `
 
-                <div class="actions">
+    if (
+        status === "APPROVED"
+    ) {
 
-                    <button
-                        class="approve"
-                        onclick="approveOrder('${order.order_id}')">
+        statusClass =
+            "approved";
 
-                        ✓ Approve
+    }
 
-                    </button>
 
-                    <button
-                        class="reject"
-                        onclick="rejectOrder('${order.order_id}')">
+    if (
+        status === "REJECTED"
+    ) {
 
-                        ✕ Reject
+        statusClass =
+            "rejected";
 
-                    </button>
+    }
 
-                </div>
 
-              `
+    let actions =
+        "";
 
-            : "";
+
+    if (
+        status === "PENDING"
+    ) {
+
+
+        actions = `
+
+            <div class="actions">
+
+                <button
+                    class="approve-button"
+                    onclick="approveOrder(
+                        '${escapeHTML(
+                            order.order_id
+                        )}'
+                    )">
+
+                    ✓ Approve Order
+
+                </button>
+
+
+                <button
+                    class="reject-button"
+                    onclick="rejectOrder(
+                        '${escapeHTML(
+                            order.order_id
+                        )}'
+                    )">
+
+                    ✕ Reject Order
+
+                </button>
+
+            </div>
+
+        `;
+
+    }
 
 
     return `
@@ -985,22 +1319,24 @@ function createOrderHTML(order) {
                 <div class="order-id">
 
                     ${escapeHTML(
-                        order.order_id
+                        order.order_id ||
+                        "Unknown Order"
                     )}
 
                 </div>
 
 
                 <div
-                    class="status ${status}">
+                    class="status ${statusClass}">
 
                     ${escapeHTML(
-                        order.status
+                        status
                     )}
 
                 </div>
 
             </div>
+
 
 
             <div class="details">
@@ -1008,12 +1344,14 @@ function createOrderHTML(order) {
 
                 <div class="detail">
 
-                    <strong>
+                    <span class="detail-label">
                         Minecraft IGN
-                    </strong>
+                    </span>
 
                     ${escapeHTML(
-                        order.minecraft_ign
+                        order.minecraft_ign ||
+                        order.ign ||
+                        "-"
                     )}
 
                 </div>
@@ -1021,12 +1359,13 @@ function createOrderHTML(order) {
 
                 <div class="detail">
 
-                    <strong>
+                    <span class="detail-label">
                         Rank
-                    </strong>
+                    </span>
 
                     ${escapeHTML(
-                        order.rank
+                        order.rank ||
+                        "-"
                     )}
 
                 </div>
@@ -1034,12 +1373,16 @@ function createOrderHTML(order) {
 
                 <div class="detail">
 
-                    <strong>
+                    <span class="detail-label">
                         Amount
-                    </strong>
+                    </span>
 
                     ₹${escapeHTML(
-                        String(order.amount)
+                        String(
+                            order.amount ??
+                            order.price ??
+                            "-"
+                        )
                     )}
 
                 </div>
@@ -1047,12 +1390,28 @@ function createOrderHTML(order) {
 
                 <div class="detail">
 
-                    <strong>
-                        UTR
-                    </strong>
+                    <span class="detail-label">
+                        UTR / Transaction ID
+                    </span>
 
                     ${escapeHTML(
-                        order.utr
+                        order.utr ||
+                        order.transaction_id ||
+                        "-"
+                    )}
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Created
+                    </span>
+
+                    ${escapeHTML(
+                        order.created_at ||
+                        "-"
                     )}
 
                 </div>
@@ -1061,7 +1420,7 @@ function createOrderHTML(order) {
             </div>
 
 
-            ${buttons}
+            ${actions}
 
 
         </div>
@@ -1071,17 +1430,23 @@ function createOrderHTML(order) {
 }
 
 
-// ==========================================
-// APPROVE
-// ==========================================
+/* =========================================
+   APPROVE ORDER
+========================================= */
 
-async function approveOrder(orderId) {
 
-    if (
-        !confirm(
-            "Approve this order?"
-        )
-    ) {
+async function approveOrder(
+    orderId
+) {
+
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to APPROVE this order?"
+        );
+
+
+    if (!confirmed) {
 
         return;
 
@@ -1096,17 +1461,23 @@ async function approveOrder(orderId) {
 }
 
 
-// ==========================================
-// REJECT
-// ==========================================
+/* =========================================
+   REJECT ORDER
+========================================= */
 
-async function rejectOrder(orderId) {
 
-    if (
-        !confirm(
-            "Reject this order?"
-        )
-    ) {
+async function rejectOrder(
+    orderId
+) {
+
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to REJECT this order?"
+        );
+
+
+    if (!confirmed) {
 
         return;
 
@@ -1121,23 +1492,35 @@ async function rejectOrder(orderId) {
 }
 
 
-// ==========================================
-// UPDATE ORDER
-// ==========================================
+/* =========================================
+   UPDATE ORDER
+========================================= */
+
 
 async function updateOrder(
     endpoint,
     orderId
 ) {
 
+
     try {
+
+
+        console.log(
+            "Updating order:",
+            orderId
+        );
+
 
         const response =
             await fetch(
-                API_URL + endpoint,
+                API_URL +
+                endpoint,
                 {
 
                     method: "POST",
+
+                    cache: "no-store",
 
                     headers: {
 
@@ -1145,33 +1528,48 @@ async function updateOrder(
                             "application/json",
 
                         "X-Admin-Password":
-                            adminPassword
+                            adminPassword,
+
+                        "Accept":
+                            "application/json"
 
                     },
 
-                    body: JSON.stringify({
+                    body:
+                        JSON.stringify({
 
-                        order_id:
-                            orderId
+                            order_id:
+                                orderId
 
-                    })
+                        })
 
                 }
             );
 
 
-        const result =
-            await response.json();
+        const text =
+            await response.text();
 
 
-        if (
-            !response.ok ||
-            !result.success
-        ) {
+        console.log(
+            "Update response:",
+            response.status,
+            text
+        );
+
+
+        let data;
+
+
+        try {
+
+            data =
+                JSON.parse(text);
+
+        } catch (error) {
 
             alert(
-                result.error ||
-                "Unable to update order."
+                "Server returned an invalid response."
             );
 
             return;
@@ -1179,8 +1577,26 @@ async function updateOrder(
         }
 
 
+        if (
+            !response.ok ||
+            !data.success
+        ) {
+
+
+            alert(
+                data.error ||
+                "Could not update order."
+            );
+
+
+            return;
+
+        }
+
+
         alert(
-            result.message
+            data.message ||
+            "Order updated successfully."
         );
 
 
@@ -1189,10 +1605,15 @@ async function updateOrder(
 
     } catch (error) {
 
-        console.error(error);
+
+        console.error(
+            "UPDATE ERROR:",
+            error
+        );
+
 
         alert(
-            "Unable to connect to server."
+            "Could not connect to the NOVEX API."
         );
 
     }
@@ -1200,65 +1621,167 @@ async function updateOrder(
 }
 
 
-// ==========================================
-// LOGOUT
-// ==========================================
-
-function logout() {
-
-    adminPassword = "";
+/* =========================================
+   REFRESH
+========================================= */
 
 
-    document
-        .getElementById("dashboard")
-        .style.display =
+refreshButton.addEventListener(
+    "click",
+    async function() {
+
+        refreshButton.disabled =
+            true;
+
+
+        refreshButton.textContent =
+            "Loading...";
+
+
+        await loadOrders();
+
+
+        refreshButton.disabled =
+            false;
+
+
+        refreshButton.textContent =
+            "↻ Refresh";
+
+    }
+);
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+
+logoutButton.addEventListener(
+    "click",
+    function() {
+
+
+        adminPassword =
+            "";
+
+
+        dashboard.style.display =
             "none";
 
 
-    document
-        .getElementById("loginCard")
-        .style.display =
+        loginCard.style.display =
             "block";
 
 
-    document
-        .getElementById("passwordInput")
-        .value =
+        passwordInput.value =
             "";
 
+
+        hideLoginError();
+
+
+        passwordInput.focus();
+
+    }
+);
+
+
+/* =========================================
+   LOGIN ERROR
+========================================= */
+
+
+function showLoginError(
+    message
+) {
+
+
+    loginError.textContent =
+        message;
+
+
+    loginError.style.display =
+        "block";
 
 }
 
 
-// ==========================================
-// SECURITY
-// ==========================================
+/* =========================================
+   HIDE LOGIN ERROR
+========================================= */
 
-function escapeHTML(value) {
 
-    return String(value ?? "")
+function hideLoginError() {
+
+
+    loginError.textContent =
+        "";
+
+
+    loginError.style.display =
+        "none";
+
+}
+
+
+/* =========================================
+   HTML SECURITY
+========================================= */
+
+
+function escapeHTML(
+    value
+) {
+
+
+    return String(
+        value ?? ""
+    )
+
         .replace(
             /&/g,
             "&amp;"
         )
+
         .replace(
             /</g,
             "&lt;"
         )
+
         .replace(
             />/g,
             "&gt;"
         )
+
         .replace(
             /"/g,
             "&quot;"
         )
+
         .replace(
             /'/g,
             "&#039;"
         );
 
 }
+
+
+/* =========================================
+   STARTUP
+========================================= */
+
+
+console.log(
+    "NOVEX ADMIN PANEL LOADED"
+);
+
+
+console.log(
+    "API URL:",
+    API_URL
+);
+
 
 </script>
 
